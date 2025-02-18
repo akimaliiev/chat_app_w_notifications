@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/auth/auth_service.dart';
+import 'package:flutter_application_2/services/auth/auth_service.dart';
 import 'package:flutter_application_2/components/my_button.dart';
 import 'package:flutter_application_2/components/my_textfield.dart';
 
@@ -15,7 +15,7 @@ class LoginPage extends StatelessWidget {
     final authService = AuthService();
 
     try{
-      await authService.signInWithEmailAndPassword(_emailController.text, _passwordController);
+      await authService.signInWithEmailPassword(_emailController.text, _passwordController.text);
     }
     catch (e){
       showDialog(
@@ -30,9 +30,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Center(
-        child: Column(
+        child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
